@@ -1,0 +1,7 @@
+# Build output and local files (never commit these)
+dist/
+node_modules/
+.env
+*.local
+.DS_Store
+Thumbs.db

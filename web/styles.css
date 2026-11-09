@@ -1,0 +1,296 @@
+/* =====================================================================
+   My Apps launcher - styles
+   Shane's Design System - Black & Purple theme
+   "Premium - Sophisticated - Quietly powerful"
+   Dark-first surfaces, thin borders, soft controlled glow, high contrast.
+   ===================================================================== */
+
+:root {
+  /* Black & Purple palette (role -> color) */
+  --bp-obsidian: #111111;          /* Primary: dark surface (the card) */
+  --bp-royal-purple: #7B1FA2;      /* Secondary: key actions (the main button) */
+  --bp-silver: #ECEFF1;            /* Accent: text, dividers, refined highlights */
+  --bp-luminous-purple: #B388FF;   /* Highlight: focus rings, links, selected states */
+  --bp-deep-black: #090909;        /* Background: page background */
+
+  /* Status colors. Always shown with an icon AND a word, never color alone. */
+  --status-success: #4CAF50;
+  --status-warning: #FF9800;
+  --status-danger: #F44336;
+
+  /* Derived tokens */
+  --text-strong: var(--bp-silver);
+  --text-muted: rgba(236, 239, 241, 0.78);
+  --divider: rgba(236, 239, 241, 0.14);
+  --divider-strong: rgba(236, 239, 241, 0.28);
+  --glow-purple: rgba(123, 31, 162, 0.35);
+
+  /* Spacing scale: 4 / 8 / 16 / 24 / 32 / 48 px */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+
+  /* Shape: 8 px controls, 12 px cards, pills only for status badges */
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --radius-pill: 999px;
+
+  /* Type: headings, body, and monospaced data (IDs, versions) */
+  --font-heading: "Poppins", "Aptos Display", "Segoe UI Semibold", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Segoe UI", "Aptos", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Aptos Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+}
+
+/* Teams high-contrast theme: drop the glow, use pure black and white. */
+body[data-teams-theme="contrast"] {
+  --bp-obsidian: #000000;
+  --bp-deep-black: #000000;
+  --text-muted: #FFFFFF;
+  --divider: #FFFFFF;
+  --divider-strong: #FFFFFF;
+  --glow-purple: transparent;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 480px at 50% -12%, rgba(123, 31, 162, 0.30), transparent 62%),
+    var(--bp-deep-black);
+  color: var(--text-strong);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-3);
+}
+
+/* Visible mode banner (Test / Production), a status badge, so a pill shape is allowed */
+.mode-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-1) 12px;
+  border: 1px solid rgba(179, 136, 255, 0.45);
+  border-radius: var(--radius-pill);
+  background: rgba(123, 31, 162, 0.18);
+  color: var(--bp-silver);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.mode-banner .icon { color: var(--bp-luminous-purple); }
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--bp-obsidian);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  text-align: center;
+  box-shadow:
+    0 0 0 1px rgba(179, 136, 255, 0.06),
+    0 24px 48px rgba(0, 0, 0, 0.55),
+    0 0 48px rgba(123, 31, 162, 0.16);
+}
+
+.app-glyph { width: 56px; height: 56px; display: block; margin: 0 auto; }
+.app-glyph .tile { fill: var(--bp-silver); }
+.app-glyph .arrow { fill: none; stroke: var(--bp-luminous-purple); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.25;
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--text-strong);
+}
+
+.lead { margin: 0 0 var(--space-4); color: var(--text-muted); }
+
+.icon, .status-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The main action. It is a link (it opens a web address) styled as a button. */
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 320px;
+  min-height: 48px;
+  padding: 12px var(--space-4);
+  border: 1px solid rgba(179, 136, 255, 0.45);
+  border-radius: var(--radius-control);
+  background: var(--bp-royal-purple);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 24px var(--glow-purple);
+  transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
+}
+.button-primary:hover {
+  border-color: var(--bp-luminous-purple);
+  box-shadow: 0 0 0 3px rgba(179, 136, 255, 0.22), 0 0 32px rgba(123, 31, 162, 0.55);
+}
+.button-primary:active { transform: translateY(1px); box-shadow: 0 0 12px var(--glow-purple); }
+.button-primary:focus-visible { outline: 3px solid var(--bp-luminous-purple); outline-offset: 3px; }
+.button-primary[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
+
+.hint { margin: var(--space-2) 0 0; font-size: 14px; color: var(--text-muted); }
+
+/* Status message: icon + word + color, announced to screen readers */
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding: 12px var(--space-3);
+  border: 1px solid var(--divider-strong);
+  border-radius: var(--radius-control);
+  background: rgba(236, 239, 241, 0.04);
+  text-align: left;
+  font-size: 14px;
+}
+.status .status-icon { display: none; width: 20px; height: 20px; margin-top: 1px; }
+.status-message { margin: 0; color: var(--text-strong); }
+.status[data-kind="info"] .icon-info { display: block; color: var(--bp-luminous-purple); }
+.status[data-kind="loading"] .icon-loading { display: block; color: var(--bp-luminous-purple); animation: spin 900ms linear infinite; }
+.status[data-kind="success"] { border-color: rgba(76, 175, 80, 0.6); }
+.status[data-kind="success"] .icon-success { display: block; color: var(--status-success); }
+.status[data-kind="warning"] { border-color: rgba(255, 152, 0, 0.6); }
+.status[data-kind="warning"] .icon-warning { display: block; color: var(--status-warning); }
+.status[data-kind="error"] { border-color: rgba(244, 67, 54, 0.7); }
+.status[data-kind="error"] .icon-error { display: block; color: var(--status-danger); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.fallback { margin: var(--space-4) 0 0; font-size: 14px; color: var(--text-muted); }
+.noscript { margin: var(--space-3) 0 0; font-size: 14px; color: var(--status-warning); }
+
+a { color: var(--bp-luminous-purple); text-underline-offset: 3px; }
+a:hover { color: var(--bp-silver); }
+a:focus-visible { outline: 2px solid var(--bp-luminous-purple); outline-offset: 2px; border-radius: 4px; }
+.button-primary:hover, .button-primary:focus-visible { color: #FFFFFF; }
+
+/* Collapsible help and tester details */
+details.more {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--divider);
+  text-align: left;
+}
+details.more summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-strong);
+  border-radius: 4px;
+}
+details.more summary:focus-visible { outline: 2px solid var(--bp-luminous-purple); outline-offset: 3px; }
+.more-body p { margin: var(--space-2) 0 0; color: var(--text-muted); font-size: 14px; }
+
+.facts { margin: var(--space-3) 0 0; display: grid; gap: var(--space-2); }
+.fact {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px dashed var(--divider);
+  font-size: 14px;
+}
+.fact dt { color: var(--text-muted); }
+.fact dd { margin: 0; text-align: right; color: var(--text-strong); overflow-wrap: anywhere; }
+
+.mono { font-family: var(--font-mono); font-size: 13px; }
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Connection badge: icon + words + color */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-1) 12px;
+  border: 1px solid var(--divider-strong);
+  border-radius: var(--radius-pill);
+  color: var(--text-strong);
+}
+.badge .icon { display: none; width: 16px; height: 16px; }
+.badge[data-state="checking"] .icon-checking { display: block; color: var(--text-muted); }
+.badge[data-state="teams"] { border-color: rgba(179, 136, 255, 0.6); }
+.badge[data-state="teams"] .icon-teams { display: block; color: var(--bp-luminous-purple); }
+.badge[data-state="browser"] .icon-browser { display: block; color: var(--bp-silver); }
+
+/* Simple content pages (privacy, terms, support, not found) */
+.doc-card { text-align: left; max-width: 720px; }
+.doc-card h1 { font-size: 26px; }
+.doc-card h2 { font-family: var(--font-heading); font-weight: 600; font-size: 18px; margin: var(--space-4) 0 var(--space-2); }
+.doc-card p, .doc-card li { color: var(--text-muted); }
+.doc-card ul { padding-left: 20px; }
+.sample-note {
+  margin: 0 0 var(--space-4);
+  padding: 12px var(--space-3);
+  border: 1px solid rgba(255, 152, 0, 0.6);
+  border-radius: var(--radius-control);
+  color: var(--text-strong);
+  font-size: 14px;
+}
+
+/* Small screens: phones and narrow Teams panes */
+@media (max-width: 480px) {
+  .page { justify-content: flex-start; padding: var(--space-4) var(--space-3); }
+  .card { padding: var(--space-4); }
+  h1 { font-size: 24px; }
+  .button-primary { max-width: none; }
+}
+
+/* Respect people who turn off motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* Windows high-contrast (forced colors) mode */
+@media (forced-colors: active) {
+  .button-primary, .status, .badge, .card, .mode-banner { border: 1px solid CanvasText; }
+  .button-primary:focus-visible, a:focus-visible { outline: 3px solid Highlight; }
+}

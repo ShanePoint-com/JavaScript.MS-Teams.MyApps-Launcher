@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "version": "1.0.0",
+  "id": "93cf438a-1baf-4a5b-b780-a2fd73215ee5",
+  "developer": {
+    "name": "REPLACE-WITH-YOUR-ORGANIZATION",
+    "websiteUrl": "https://REPLACE-WITH-YOUR-HOSTNAME/support.html",
+    "privacyUrl": "https://REPLACE-WITH-YOUR-HOSTNAME/privacy.html",
+    "termsOfUseUrl": "https://REPLACE-WITH-YOUR-HOSTNAME/terms.html"
+  },
+  "name": {
+    "short": "My Apps",
+    "full": "My Apps launcher for Microsoft Teams"
+  },
+  "description": {
+    "short": "Open Microsoft My Apps in your browser with one click.",
+    "full": "My Apps is a doorway from Microsoft Teams to Microsoft My Apps. Select Open My Apps and My Apps opens in your web browser, where you can launch the applications your organization has assigned to you. The launcher doesn't sign you in, doesn't store your information, and doesn't call any APIs. Your normal Microsoft sign-in and your organization's security checks still apply."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#7B1FA2",
+  "staticTabs": [
+    {
+      "entityId": "myApps",
+      "name": "My Apps",
+      "contentUrl": "https://REPLACE-WITH-YOUR-HOSTNAME/",
+      "websiteUrl": "https://REPLACE-WITH-YOUR-HOSTNAME/",
+      "scopes": ["personal"],
+      "context": ["personalTab"]
+    }
+  ],
+  "validDomains": [
+    "REPLACE-WITH-YOUR-HOSTNAME"
+  ],
+  "showLoadingIndicator": false,
+  "isFullScreen": false,
+  "defaultInstallScope": "personal"
+}
